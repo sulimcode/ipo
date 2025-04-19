@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prayer Times</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-top">
+                <div class="language-selector">
+                    <select id="language-select">
+                        <option value="en">English</option>
+                        <option value="ru">Русский</option>
+                        <option value="ar">العربية</option>
+                        <option value="fr">Français</option>
+                    </select>
+                </div>
+                <h1 id="app-title">Prayer Times</h1>
+                <div class="theme-switch">
+                    <button id="theme-toggle"><i class="fas fa-moon"></i></button>
+                </div>
+            </div>
+        </header>
+
+        <div class="date-display">
+            <div id="gregorian-date">Loading...</div>
+            <div id="islamic-date">Loading...</div>
+        </div>
+        
+        <div class="location-section">
+            <div class="location-display">
+                <h2 id="location-title">Location</h2>
+                <div class="current-location">
+                    <span id="location-name">Mecca</span>
+                    <button id="change-location" class="small-button"><i class="fas fa-edit"></i></button>
+                    <button id="use-geolocation" class="small-button"><i class="fas fa-map-marker-alt"></i></button>
+                </div>
+            </div>
+            
+            <div id="location-search" class="location-search hidden">
+                <input type="text" id="location-search-input" placeholder="Search for a city...">
+                <div id="location-search-results" class="search-results"></div>
+                <div id="popular-locations">
+                    <h3 id="popular-locations-title">Popular Locations</h3>
+                    <div id="popular-locations-list" class="location-grid"></div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="prayer-method-section">
+            <h2 id="calculation-method-title">Calculation Method</h2>
+            <select id="calculation-method">
+                <option value="0">Muslim World League</option>
+                <option value="1">Islamic Society of North America (ISNA)</option>
+                <option value="2" selected>Egyptian General Authority of Survey</option>
+                <option value="3">Umm al-Qura University, Makkah</option>
+                <option value="4">University of Islamic Sciences, Karachi</option>
+                <option value="5">Institute of Geophysics, University of Tehran</option>
+                <option value="7">Shia Ithna-Ashari, Leva Institute, Qum</option>
+            </select>
+        </div>
+        
+        <div class="next-prayer">
+            <h2 id="next-prayer-title">Next Prayer</h2>
+            <div class="prayer-info">
+                <div id="next-prayer-name">Loading...</div>
+                <div id="next-prayer-time">--:--</div>
+                <div id="countdown">--:--</div>
+            </div>
+        </div>
+        
+        <div class="prayer-times">
+            <h2 id="today-prayer-title">Today's Prayer Times</h2>
+            <div id="prayer-list">
+                <div class="prayer-item" id="fajr-item">
+                    <span class="prayer-name" id="fajr-label">Fajr</span>
+                    <span class="prayer-time" id="fajr-time">--:--</span>
+                </div>
+                <div class="prayer-item" id="sunrise-item">
+                    <span class="prayer-name" id="sunrise-label">Sunrise</span>
+                    <span class="prayer-time" id="sunrise-time">--:--</span>
+                </div>
+                <div class="prayer-item" id="dhuhr-item">
+                    <span class="prayer-name" id="dhuhr-label">Dhuhr</span>
+                    <span class="prayer-time" id="dhuhr-time">--:--</span>
+                </div>
+                <div class="prayer-item" id="asr-item">
+                    <span class="prayer-name" id="asr-label">Asr</span>
+                    <span class="prayer-time" id="asr-time">--:--</span>
+                </div>
+                <div class="prayer-item" id="maghrib-item">
+                    <span class="prayer-name" id="maghrib-label">Maghrib</span>
+                    <span class="prayer-time" id="maghrib-time">--:--</span>
+                </div>
+                <div class="prayer-item" id="isha-item">
+                    <span class="prayer-name" id="isha-label">Isha</span>
+                    <span class="prayer-time" id="isha-time">--:--</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="monthly-view-toggle">
+            <button id="toggle-monthly-view" class="btn-primary">
+                <span id="monthly-view-label">Show Monthly Schedule</span>
+            </button>
+        </div>
+        
+        <div id="monthly-schedule" class="monthly-schedule hidden">
+            <div class="month-navigation">
+                <button id="prev-month" class="month-nav-btn"><i class="fas fa-chevron-left"></i></button>
+                <h2 id="month-year-display">April 2025</h2>
+                <button id="next-month" class="month-nav-btn"><i class="fas fa-chevron-right"></i></button>
+            </div>
+            
+            <div class="monthly-grid" id="monthly-grid">
+                <!-- Будет заполнено через JavaScript -->
+            </div>
+        </div>
+        
+        <footer>
+            <div class="footer-content">
+                <p id="footer-text">Prayer times data provided by AlAdhan.com API</p>
+                <p>&copy; <span id="current-year">2025</span> Prayer Times App</p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Модальное окно для отдельного дня -->
+    <div id="day-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2 id="modal-day-title">Prayer Times for </h2>
+            <div id="modal-prayer-times" class="modal-prayer-list">
+                <!-- Будет заполнено через JavaScript -->
+            </div>
+        </div>
+    </div>
+    
+    <!-- JavaScript файлы -->
+    <script src="js/translations.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>

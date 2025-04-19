@@ -1,0 +1,14 @@
+{
+  "name": "prayer-times-app",
+  "framework": "vite",
+  "nodeVersion": "18.x",
+  "outputDirectory": "dist",
+  "settings": {
+    "runtime": "nodejs18.x",
+    "minification": {
+      "html": true,
+      "css": true,
+      "js": true
+    }
+  }
+}

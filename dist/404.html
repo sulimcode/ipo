@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Страница не найдена - Время молитв</title>
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <style>
+    .error-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 70vh;
+      text-align: center;
+      padding: 2rem;
+    }
+    
+    .error-icon {
+      font-size: 5rem;
+      color: var(--accent-color);
+      margin-bottom: 1.5rem;
+    }
+    
+    .error-title {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+    
+    .error-message {
+      font-size: 1.25rem;
+      color: var(--text-light);
+      margin-bottom: 2rem;
+      max-width: 600px;
+    }
+    
+    .home-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background-color: var(--accent-color);
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border-radius: var(--radius);
+      text-decoration: none;
+      font-weight: 500;
+      transition: background-color var(--transition);
+    }
+    
+    .home-button:hover {
+      background-color: var(--active-color);
+    }
+  </style>
+</head>
+<body>
+  <div class="app-container">
+    <header class="header">
+      <div class="container">
+        <div class="header-content">
+          <div class="logo">
+            <i class="fas fa-mosque"></i>
+            <h1>Время молитв</h1>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="main">
+      <div class="container">
+        <div class="error-container">
+          <div class="error-icon">
+            <i class="fas fa-compass"></i>
+          </div>
+          <h1 class="error-title">404</h1>
+          <p class="error-message">Страница, которую вы ищете, не существует или была перемещена.</p>
+          <a href="/" class="home-button">
+            <i class="fas fa-home"></i>
+            Вернуться на главную
+          </a>
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-content">
+          <p>© 2025 Время молитв</p>
+          <div class="footer-links">
+            <a href="/">На главную</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    // Простой скрипт для определения и применения темы
+    const savedTheme = localStorage.getItem('prayer_app_theme');
+    if (savedTheme === 'dark') {
+      document.body.classList.add('dark-theme');
+    }
+    
+    // Определение языка для текстов
+    const savedLanguage = localStorage.getItem('prayer_app_language') || 'ru';
+    
+    // Простые переводы для страницы 404
+    const translations = {
+      ru: {
+        appName: "Время молитв",
+        title: "Страница не найдена",
+        message: "Страница, которую вы ищете, не существует или была перемещена.",
+        homeButton: "Вернуться на главную",
+        footer: "На главную"
+      },
+      en: {
+        appName: "Prayer Times",
+        title: "Page Not Found",
+        message: "The page you are looking for doesn't exist or has been moved.",
+        homeButton: "Return to Homepage",
+        footer: "Home"
+      },
+      ar: {
+        appName: "أوقات الصلاة",
+        title: "الصفحة غير موجودة",
+        message: "الصفحة التي تبحث عنها غير موجودة أو تم نقلها.",
+        homeButton: "العودة إلى الصفحة الرئيسية",
+        footer: "الصفحة الرئيسية"
+      },
+      fr: {
+        appName: "Horaires de Prière",
+        title: "Page Non Trouvée",
+        message: "La page que vous recherchez n'existe pas ou a été déplacée.",
+        homeButton: "Retour à l'Accueil",
+        footer: "Accueil"
+      }
+    };
+    
+    // Применяем переводы
+    const t = translations[savedLanguage] || translations.en;
+    document.title = `${t.title} - ${t.appName}`;
+    document.querySelector('.logo h1').textContent = t.appName;
+    document.querySelector('.error-title').textContent = '404';
+    document.querySelector('.error-message').textContent = t.message;
+    document.querySelector('.home-button').innerHTML = `<i class="fas fa-home"></i> ${t.homeButton}`;
+    document.querySelector('.footer-links a').textContent = t.footer;
+    
+    // Устанавливаем направление текста для арабского языка
+    document.documentElement.dir = savedLanguage === 'ar' ? 'rtl' : 'ltr';
+  </script>
+</body>
+</html>

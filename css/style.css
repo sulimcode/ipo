@@ -1,0 +1,505 @@
+/* Основные стили и переменные */
+:root {
+    --primary-color: #4caf50;
+    --secondary-color: #2e7d32;
+    --accent-color: #81c784;
+    --text-color: #333;
+    --light-text: #fff;
+    --background-color: #f5f5f5;
+    --card-background: #fff;
+    --border-color: #e0e0e0;
+    --prayer-item-hover: #f5f5f5;
+    --prayer-item-current: #e8f5e9;
+    --shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    --transition: all 0.3s ease;
+    --border-radius: 8px;
+    --modal-background: rgba(0, 0, 0, 0.5);
+}
+
+/* Темная тема */
+body.dark-mode {
+    --primary-color: #66bb6a;
+    --secondary-color: #4caf50;
+    --accent-color: #a5d6a7;
+    --text-color: #f5f5f5;
+    --light-text: #f5f5f5;
+    --background-color: #121212;
+    --card-background: #1e1e1e;
+    --border-color: #333;
+    --prayer-item-hover: #252525;
+    --prayer-item-current: #2e3b2f;
+    --shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+/* Базовый стиль */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    transition: var(--transition);
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* RTL поддержка для арабского языка */
+[dir="rtl"] .container {
+    text-align: right;
+}
+
+h1, h2, h3 {
+    color: var(--primary-color);
+    margin-bottom: 15px;
+}
+
+/* Хедер */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.controls {
+    display: flex;
+    gap: 10px;
+}
+
+#language-select {
+    padding: 8px;
+    border-radius: var(--border-radius);
+    border: 1px solid var(--border-color);
+    background-color: var(--card-background);
+    color: var(--text-color);
+    cursor: pointer;
+}
+
+.theme-toggle {
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    color: var(--primary-color);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.theme-toggle:hover {
+    color: var(--secondary-color);
+}
+
+/* Дата */
+.date-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.gregorian-date {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.islamic-date {
+    font-size: 1rem;
+    color: var(--accent-color);
+}
+
+/* Местоположение */
+.location-container {
+    background-color: var(--card-background);
+    border-radius: var(--border-radius);
+    padding: 15px;
+    margin-bottom: 20px;
+    box-shadow: var(--shadow);
+    position: relative;
+}
+
+.location-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.location-header h2 {
+    margin-bottom: 0;
+}
+
+.location-name {
+    font-size: 1.1rem;
+    font-weight: bold;
+    flex-grow: 1;
+    margin: 0 15px;
+}
+
+.change-location {
+    background: none;
+    border: none;
+    color: var(--primary-color);
+    cursor: pointer;
+    font-size: 1.2rem;
+    transition: var(--transition);
+}
+
+.change-location:hover {
+    color: var(--secondary-color);
+}
+
+/* Поиск местоположения */
+.location-search {
+    margin-top: 15px;
+    border-top: 1px solid var(--border-color);
+    padding-top: 15px;
+}
+
+.search-header {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+#location-search-input {
+    flex-grow: 1;
+    padding: 8px;
+    border-radius: var(--border-radius);
+    border: 1px solid var(--border-color);
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+
+.use-geolocation {
+    background: var(--primary-color);
+    color: var(--light-text);
+    border: none;
+    border-radius: var(--border-radius);
+    padding: 8px 12px;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.use-geolocation:hover {
+    background: var(--secondary-color);
+}
+
+.search-results {
+    max-height: 200px;
+    overflow-y: auto;
+    margin-bottom: 15px;
+}
+
+.search-item, .popular-location-item {
+    padding: 8px;
+    border-bottom: 1px solid var(--border-color);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.search-item:hover, .popular-location-item:hover {
+    background-color: var(--prayer-item-hover);
+}
+
+.popular-locations h3 {
+    margin: 10px 0;
+}
+
+/* Метод расчета */
+.calculation-method-container {
+    background-color: var(--card-background);
+    border-radius: var(--border-radius);
+    padding: 15px;
+    margin-bottom: 20px;
+    box-shadow: var(--shadow);
+}
+
+#calculation-method {
+    width: 100%;
+    padding: 8px;
+    border-radius: var(--border-radius);
+    border: 1px solid var(--border-color);
+    background-color: var(--background-color);
+    color: var(--text-color);
+    margin-top: 5px;
+}
+
+/* Следующая молитва */
+.next-prayer-container {
+    background-color: var(--primary-color);
+    color: var(--light-text);
+    border-radius: var(--border-radius);
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: var(--shadow);
+    text-align: center;
+}
+
+.next-prayer-container h2 {
+    color: var(--light-text);
+    margin-bottom: 10px;
+}
+
+.next-prayer-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.next-prayer-name {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.next-prayer-time {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.countdown {
+    font-size: 1.1rem;
+}
+
+/* Молитвы на сегодня */
+.prayer-times-container {
+    background-color: var(--card-background);
+    border-radius: var(--border-radius);
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: var(--shadow);
+}
+
+.prayer-list {
+    list-style: none;
+}
+
+.prayer-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    border-bottom: 1px solid var(--border-color);
+    transition: var(--transition);
+}
+
+.prayer-item:last-child {
+    border-bottom: none;
+}
+
+.prayer-item:hover {
+    background-color: var(--prayer-item-hover);
+}
+
+.prayer-item.current {
+    background-color: var(--prayer-item-current);
+    font-weight: bold;
+}
+
+/* Месячное расписание */
+.toggle-monthly-container {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.toggle-monthly {
+    background-color: var(--primary-color);
+    color: var(--light-text);
+    border: none;
+    border-radius: var(--border-radius);
+    padding: 10px 15px;
+    cursor: pointer;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin: 0 auto;
+}
+
+.toggle-monthly:hover {
+    background-color: var(--secondary-color);
+}
+
+.monthly-schedule {
+    background-color: var(--card-background);
+    border-radius: var(--border-radius);
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: var(--shadow);
+}
+
+.monthly-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.month-nav {
+    background: none;
+    border: none;
+    color: var(--primary-color);
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.month-nav:hover {
+    color: var(--secondary-color);
+}
+
+.monthly-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 10px;
+}
+
+.day-header {
+    text-align: center;
+    font-weight: bold;
+    padding: 5px;
+    color: var(--primary-color);
+}
+
+.day-cell {
+    height: 80px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    padding: 5px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: var(--transition);
+    display: flex;
+    flex-direction: column;
+}
+
+.day-cell:hover {
+    background-color: var(--prayer-item-hover);
+}
+
+.day-cell.empty {
+    background-color: transparent;
+    border: none;
+    cursor: default;
+}
+
+.day-cell.current-day {
+    border: 2px solid var(--primary-color);
+    background-color: var(--prayer-item-current);
+}
+
+.day-number {
+    font-weight: bold;
+    margin-bottom: 3px;
+}
+
+.day-fajr, .day-isha {
+    font-size: 0.7rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Модальное окно */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--modal-background);
+    z-index: 1000;
+    overflow: auto;
+}
+
+.modal-content {
+    background-color: var(--card-background);
+    margin: 10% auto;
+    padding: 20px;
+    border-radius: var(--border-radius);
+    max-width: 500px;
+    position: relative;
+    box-shadow: var(--shadow);
+}
+
+.close-modal {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--text-color);
+}
+
+.modal-prayer-times {
+    margin-top: 15px;
+}
+
+.modal-prayer-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.modal-prayer-item:last-child {
+    border-bottom: none;
+}
+
+/* Футер */
+footer {
+    text-align: center;
+    padding: 20px 0;
+    border-top: 1px solid var(--border-color);
+    margin-top: 20px;
+    font-size: 0.9rem;
+    color: var(--accent-color);
+}
+
+/* Утилиты */
+.hidden {
+    display: none !important;
+}
+
+/* Медиа-запросы для адаптивности */
+@media (max-width: 600px) {
+    .container {
+        padding: 10px;
+    }
+    
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .controls {
+        margin-top: 10px;
+        align-self: flex-end;
+    }
+    
+    .monthly-grid {
+        grid-template-columns: repeat(7, 1fr);
+        gap: 5px;
+    }
+    
+    .day-cell {
+        height: 60px;
+        font-size: 0.8rem;
+    }
+    
+    .modal-content {
+        margin: 20% auto;
+        width: 90%;
+    }
+}

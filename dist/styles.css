@@ -1,0 +1,656 @@
+/* Основные стили */
+:root {
+  --primary-color: #4a5568;
+  --secondary-color: #2d3748;
+  --accent-color: #3182ce;
+  --text-color: #1a202c;
+  --text-light: #718096;
+  --bg-color: #f7fafc;
+  --card-bg: #ffffff;
+  --border-color: #e2e8f0;
+  --success-color: #38a169;
+  --active-color: #3182ce;
+  --highlight-color: #f6e05e;
+  --prayer-color-fajr: #805ad5;
+  --prayer-color-sunrise: #ed8936;
+  --prayer-color-dhuhr: #3182ce;
+  --prayer-color-asr: #38a169;
+  --prayer-color-maghrib: #d53f8c;
+  --prayer-color-isha: #2c5282;
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --radius-sm: 0.2rem;
+  --radius: 0.375rem;
+  --radius-lg: 0.5rem;
+  --transition: 0.3s ease-in-out;
+  --font-family: 'Roboto', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* Тёмная тема */
+.dark-theme {
+  --primary-color: #a0aec0;
+  --secondary-color: #cbd5e0;
+  --accent-color: #63b3ed;
+  --text-color: #f7fafc;
+  --text-light: #e2e8f0;
+  --bg-color: #1a202c;
+  --card-bg: #2d3748;
+  --border-color: #4a5568;
+  --success-color: #48bb78;
+  --active-color: #4299e1;
+  --highlight-color: #ecc94b;
+  --prayer-color-fajr: #9f7aea;
+  --prayer-color-sunrise: #f6ad55;
+  --prayer-color-dhuhr: #4299e1;
+  --prayer-color-asr: #48bb78;
+  --prayer-color-maghrib: #ed64a6;
+  --prayer-color-isha: #4a5568;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-family);
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  line-height: 1.5;
+  transition: background-color var(--transition), color var(--transition);
+}
+
+.app-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* Шапка */
+.header {
+  background-color: var(--card-bg);
+  box-shadow: var(--shadow);
+  padding: 1rem 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  transition: background-color var(--transition);
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.logo i {
+  font-size: 1.5rem;
+  color: var(--accent-color);
+}
+
+.logo h1 {
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.date-display {
+  text-align: center;
+}
+
+#gregorian-date {
+  font-weight: 500;
+}
+
+#islamic-date {
+  font-size: 0.875rem;
+  color: var(--text-light);
+}
+
+.settings {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+#theme-toggle {
+  background: none;
+  border: none;
+  color: var(--text-color);
+  font-size: 1.25rem;
+  cursor: pointer;
+  transition: color var(--transition);
+}
+
+#theme-toggle:hover {
+  color: var(--accent-color);
+}
+
+.language-selector {
+  position: relative;
+}
+
+#language-button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: none;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius);
+  padding: 0.5rem;
+  color: var(--text-color);
+  cursor: pointer;
+  transition: background-color var(--transition);
+}
+
+#language-button:hover {
+  background-color: var(--border-color);
+}
+
+.language-dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  width: 150px;
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  display: none;
+  z-index: 10;
+}
+
+.language-dropdown.show {
+  display: block;
+}
+
+.language-option {
+  padding: 0.75rem 1rem;
+  cursor: pointer;
+  transition: background-color var(--transition);
+}
+
+.language-option:hover {
+  background-color: var(--border-color);
+}
+
+/* Основной контент */
+.main {
+  flex-grow: 1;
+  padding: 2rem 0;
+}
+
+/* Выбор местоположения */
+.location-selector-section {
+  margin-bottom: 2rem;
+}
+
+.location-selector {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.location-input-wrapper {
+  display: flex;
+  align-items: center;
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius);
+  padding: 0.5rem 1rem;
+  box-shadow: var(--shadow-sm);
+  transition: border-color var(--transition), box-shadow var(--transition);
+}
+
+.location-input-wrapper:focus-within {
+  border-color: var(--accent-color);
+  box-shadow: var(--shadow);
+}
+
+.location-input-wrapper i {
+  color: var(--text-light);
+  margin-right: 0.75rem;
+}
+
+#location-input {
+  flex-grow: 1;
+  border: none;
+  outline: none;
+  background: none;
+  color: var(--text-color);
+  font-size: 1rem;
+}
+
+#location-input::placeholder {
+  color: var(--text-light);
+}
+
+#geolocation-button {
+  background: none;
+  border: none;
+  color: var(--accent-color);
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  margin-left: 0.5rem;
+  transition: color var(--transition);
+}
+
+#geolocation-button:hover {
+  color: var(--active-color);
+}
+
+.location-results {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-top: none;
+  border-radius: 0 0 var(--radius) var(--radius);
+  max-height: 300px;
+  overflow-y: auto;
+  z-index: 5;
+  display: none;
+}
+
+.location-results.show {
+  display: block;
+}
+
+.location-result-item {
+  padding: 0.75rem 1rem;
+  cursor: pointer;
+  transition: background-color var(--transition);
+}
+
+.location-result-item:hover {
+  background-color: var(--border-color);
+}
+
+.location-result-name {
+  font-weight: 500;
+}
+
+.location-result-country {
+  font-size: 0.875rem;
+  color: var(--text-light);
+}
+
+/* Следующая молитва */
+.next-prayer-countdown {
+  background-color: var(--card-bg);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  text-align: center;
+  margin-bottom: 2rem;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border-color);
+  transition: background-color var(--transition), border-color var(--transition);
+}
+
+.next-prayer-title {
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+  color: var(--text-light);
+}
+
+.next-prayer-name {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+}
+
+.next-prayer-time {
+  font-size: 3rem;
+  font-weight: 500;
+  color: var(--accent-color);
+  margin-bottom: 1rem;
+}
+
+.countdown-timer {
+  font-size: 1.5rem;
+  font-weight: 300;
+  color: var(--text-light);
+}
+
+/* Карточки с временем молитв */
+.prayer-times-section {
+  margin-bottom: 2rem;
+}
+
+.prayer-times-section h2 {
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+.prayer-times-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1rem;
+}
+
+.prayer-time-card {
+  background-color: var(--card-bg);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  text-align: center;
+  box-shadow: var(--shadow);
+  border-left: 4px solid var(--accent-color);
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.prayer-time-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
+}
+
+.prayer-time-card.active {
+  border-color: var(--success-color);
+  background-color: rgba(56, 161, 105, 0.1);
+}
+
+.prayer-time-card-fajr {
+  border-color: var(--prayer-color-fajr);
+}
+
+.prayer-time-card-sunrise {
+  border-color: var(--prayer-color-sunrise);
+}
+
+.prayer-time-card-dhuhr {
+  border-color: var(--prayer-color-dhuhr);
+}
+
+.prayer-time-card-asr {
+  border-color: var(--prayer-color-asr);
+}
+
+.prayer-time-card-maghrib {
+  border-color: var(--prayer-color-maghrib);
+}
+
+.prayer-time-card-isha {
+  border-color: var(--prayer-color-isha);
+}
+
+.prayer-name {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.prayer-time {
+  font-size: 1.75rem;
+  font-weight: 500;
+  color: var(--accent-color);
+}
+
+/* Заглушки при загрузке */
+.prayer-time-card-skeleton {
+  background-color: var(--card-bg);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  box-shadow: var(--shadow);
+  border-left: 4px solid var(--border-color);
+  position: relative;
+  overflow: hidden;
+}
+
+.prayer-time-card-skeleton::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.1) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  animation: skeleton-loading 1.5s infinite;
+}
+
+@keyframes skeleton-loading {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* Расписание на месяц */
+.monthly-schedule-section {
+  margin-bottom: 2rem;
+}
+
+.monthly-schedule-section h2 {
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+.monthly-schedule-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1rem;
+  gap: 1rem;
+}
+
+#prev-month, #next-month {
+  background: none;
+  border: none;
+  color: var(--text-color);
+  font-size: 1.25rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  transition: color var(--transition);
+}
+
+#prev-month:hover, #next-month:hover {
+  color: var(--accent-color);
+}
+
+.month-year {
+  font-size: 1.25rem;
+  font-weight: 500;
+}
+
+.monthly-schedule-table-container {
+  overflow-x: auto;
+}
+
+.monthly-schedule-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+  box-shadow: var(--shadow);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.monthly-schedule-table th,
+.monthly-schedule-table td {
+  padding: 0.75rem 1rem;
+  text-align: center;
+  border: 1px solid var(--border-color);
+}
+
+.monthly-schedule-table th {
+  background-color: var(--primary-color);
+  color: var(--bg-color);
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.monthly-schedule-table tbody tr {
+  background-color: var(--card-bg);
+  transition: background-color var(--transition);
+}
+
+.monthly-schedule-table tbody tr:hover {
+  background-color: rgba(0, 0, 0, 0.025);
+}
+
+.monthly-schedule-table tbody tr.today {
+  background-color: rgba(49, 130, 206, 0.1);
+}
+
+.monthly-schedule-table .date-cell {
+  font-weight: 500;
+}
+
+.monthly-schedule-table .islamic-date {
+  display: block;
+  font-size: 0.75rem;
+  color: var(--text-light);
+  margin-top: 0.25rem;
+}
+
+/* Подвал */
+.footer {
+  background-color: var(--card-bg);
+  box-shadow: 0 -1px 3px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem 0;
+  transition: background-color var(--transition);
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-links {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.footer-links a {
+  color: var(--text-color);
+  text-decoration: none;
+  transition: color var(--transition);
+}
+
+.footer-links a:hover {
+  color: var(--accent-color);
+}
+
+/* Оверлей загрузки */
+.loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity var(--transition), visibility var(--transition);
+}
+
+.loading-overlay.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+.spinner {
+  width: 50px;
+  height: 50px;
+  border: 4px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: #fff;
+  animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Медиа-запросы */
+@media (max-width: 768px) {
+  .header-content {
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .logo {
+    order: 1;
+    flex: 1;
+  }
+
+  .settings {
+    order: 2;
+  }
+
+  .date-display {
+    order: 3;
+    width: 100%;
+    margin-top: 0.5rem;
+  }
+
+  .next-prayer-time {
+    font-size: 2.5rem;
+  }
+
+  .countdown-timer {
+    font-size: 1.25rem;
+  }
+
+  .prayer-times-cards {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  }
+
+  .footer-content {
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .prayer-times-cards {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .prayer-name {
+    font-size: 1rem;
+  }
+
+  .prayer-time {
+    font-size: 1.5rem;
+  }
+
+  .monthly-schedule-table th,
+  .monthly-schedule-table td {
+    padding: 0.5rem;
+    font-size: 0.875rem;
+  }
+}

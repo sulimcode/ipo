@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Время молитв</title>
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="app-container">
+    <header class="header">
+      <div class="container">
+        <div class="header-content">
+          <div class="logo">
+            <i class="fas fa-mosque"></i>
+            <h1>Время молитв</h1>
+          </div>
+          <div class="date-display">
+            <div id="gregorian-date">--</div>
+            <div id="islamic-date">--</div>
+          </div>
+          <div class="settings">
+            <button id="theme-toggle" aria-label="Сменить тему">
+              <i class="fas fa-moon"></i>
+            </button>
+            <div class="language-selector">
+              <button id="language-button" aria-label="Выбрать язык">
+                <span class="current-language">RU</span>
+                <i class="fas fa-chevron-down"></i>
+              </button>
+              <div class="language-dropdown" id="language-dropdown">
+                <div class="language-option" data-lang="ru">Русский</div>
+                <div class="language-option" data-lang="en">English</div>
+                <div class="language-option" data-lang="ar">العربية</div>
+                <div class="language-option" data-lang="fr">Français</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="main">
+      <div class="container">
+        <section class="location-selector-section">
+          <div class="location-selector">
+            <div class="location-input-wrapper">
+              <i class="fas fa-map-marker-alt"></i>
+              <input 
+                type="text" 
+                id="location-input" 
+                placeholder="Введите название города..."
+                autocomplete="off"
+              >
+              <button id="geolocation-button" aria-label="Определить местоположение">
+                <i class="fas fa-crosshairs"></i>
+              </button>
+            </div>
+            <div class="location-results" id="location-results"></div>
+          </div>
+        </section>
+
+        <section class="next-prayer-countdown">
+          <div class="next-prayer-title">Следующая молитва</div>
+          <div class="next-prayer-name" id="next-prayer-name">--</div>
+          <div class="next-prayer-time" id="next-prayer-time">--:--</div>
+          <div class="countdown-timer" id="countdown-timer">--:--:--</div>
+        </section>
+
+        <section class="prayer-times-section">
+          <h2>Расписание молитв на сегодня</h2>
+          <div class="prayer-times-cards" id="prayer-times-cards">
+            <!-- Карточки молитв будут добавлены через JavaScript -->
+            <div class="prayer-time-card-skeleton"></div>
+            <div class="prayer-time-card-skeleton"></div>
+            <div class="prayer-time-card-skeleton"></div>
+            <div class="prayer-time-card-skeleton"></div>
+            <div class="prayer-time-card-skeleton"></div>
+            <div class="prayer-time-card-skeleton"></div>
+          </div>
+        </section>
+
+        <section class="monthly-schedule-section">
+          <h2>Расписание на месяц</h2>
+          <div class="monthly-schedule-header">
+            <button id="prev-month" aria-label="Предыдущий месяц">
+              <i class="fas fa-chevron-left"></i>
+            </button>
+            <div class="month-year" id="month-year">-- ----</div>
+            <button id="next-month" aria-label="Следующий месяц">
+              <i class="fas fa-chevron-right"></i>
+            </button>
+          </div>
+          <div class="monthly-schedule-table-container">
+            <table class="monthly-schedule-table" id="monthly-schedule-table">
+              <thead>
+                <tr>
+                  <th>Дата</th>
+                  <th>Фаджр</th>
+                  <th>Восход</th>
+                  <th>Зухр</th>
+                  <th>Аср</th>
+                  <th>Магриб</th>
+                  <th>Иша</th>
+                </tr>
+              </thead>
+              <tbody id="monthly-schedule-body">
+                <!-- Данные будут добавлены через JavaScript -->
+              </tbody>
+            </table>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-content">
+          <p>© 2025 Время молитв | <span id="current-year"></span></p>
+          <div class="footer-links">
+            <a href="#" id="about-link">О приложении</a>
+            <a href="#" id="contact-link">Контакты</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <div class="loading-overlay" id="loading-overlay">
+    <div class="spinner"></div>
+  </div>
+  
+  <script src="/translations.js"></script>
+  <script src="/app.js"></script>
+</body>
+</html>
