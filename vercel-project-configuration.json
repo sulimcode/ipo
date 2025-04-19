@@ -1,0 +1,15 @@
+{
+  "projectSettings": {
+    "framework": "vite",
+    "buildCommand": "node --no-warnings vercel-build.cjs && npm run build",
+    "devCommand": "npm run dev",
+    "outputDirectory": "dist",
+    "installCommand": "npm install"
+  },
+  "framework": {
+    "name": "vite",
+    "version": "latest"
+  },
+  "nodeVersion": "18.x",
+  "public": true
+}

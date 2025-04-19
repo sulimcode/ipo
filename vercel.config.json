@@ -1,0 +1,32 @@
+{
+  "version": 2,
+  "framework": "vite",
+  "installCommand": "npm install",
+  "buildCommand": "node --no-warnings vercel-checker.cjs && node --no-warnings vercel-build.cjs && npm run build",
+  "outputDirectory": "dist",
+  "images": {
+    "domains": [],
+    "sizes": [256, 512, 1024, 2048],
+    "remotePatterns": [],
+    "minimumCacheTTL": 60
+  },
+  "build": {
+    "env": {
+      "NODE_ENV": "production",
+      "VERCEL_DEPLOYMENT": "true"
+    }
+  },
+  "redirects": [],
+  "rewrites": [
+    { "source": "/api/:path*", "destination": "/api/[[...path]].ts" },
+    { "source": "/(.*)", "destination": "/index.html" }
+  ],
+  "functions": {
+    "api/**/*.ts": {
+      "runtime": "@vercel/node@2.10.0",
+      "memory": 1024,
+      "maxDuration": 10
+    }
+  },
+  "nodeVersion": "18.x"
+}

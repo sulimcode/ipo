@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Scheherazade+New:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Prayer - Islamic Prayer Times</title>
+  </head>
+  <body>
+    <div id="app">
+      <header class="header">
+        <div class="container">
+          <div class="header-content">
+            <div class="logo">
+              <h1>Prayer Times</h1>
+            </div>
+            <div class="date-display">
+              <div class="date" id="gregorian-date">Loading...</div>
+              <div class="date" id="islamic-date">Loading...</div>
+            </div>
+            <div class="theme-toggle">
+              <button id="theme-toggle-btn" aria-label="Toggle theme">
+                <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
+                </svg>
+                <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="4"></circle>
+                  <path d="M12 2v2"></path>
+                  <path d="M12 20v2"></path>
+                  <path d="m4.93 4.93 1.41 1.41"></path>
+                  <path d="m17.66 17.66 1.41 1.41"></path>
+                  <path d="M2 12h2"></path>
+                  <path d="M20 12h2"></path>
+                  <path d="m6.34 17.66-1.41 1.41"></path>
+                  <path d="m19.07 4.93-1.41 1.41"></path>
+                </svg>
+              </button>
+            </div>
+            <div class="language-selector">
+              <button id="language-toggle-btn" aria-label="Change language">
+                <span id="current-language">English</span>
+              </button>
+              <div class="language-dropdown" id="language-dropdown">
+                <button data-lang="en">English</button>
+                <button data-lang="ru">Русский</button>
+                <button data-lang="ar">العربية</button>
+                <button data-lang="fr">Français</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+      
+      <main class="container">
+        <section class="location-selector">
+          <div class="location-search">
+            <div class="search-wrapper">
+              <input type="text" id="location-search" placeholder="Search for a city..." aria-label="Search for a city">
+              <button id="geolocation-btn" aria-label="Use my location">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <circle cx="12" cy="12" r="1"></circle>
+                  <line x1="12" y1="2" x2="12" y2="4"></line>
+                  <line x1="12" y1="20" x2="12" y2="22"></line>
+                  <line x1="4" y1="12" x2="2" y2="12"></line>
+                  <line x1="22" y1="12" x2="20" y2="12"></line>
+                </svg>
+              </button>
+            </div>
+            <div class="search-results" id="search-results">
+              <!-- Search results will be populated here -->
+            </div>
+          </div>
+          <div class="selected-location">
+            <h2 id="current-location">Mecca, Saudi Arabia</h2>
+          </div>
+        </section>
+        
+        <section class="next-prayer">
+          <div class="next-prayer-content">
+            <h2 class="next-prayer-title" id="next-prayer-title">Next Prayer</h2>
+            <div class="next-prayer-name" id="next-prayer-name">Fajr</div>
+            <div class="next-prayer-time" id="next-prayer-time">04:55</div>
+            <div class="countdown" id="countdown">Loading...</div>
+          </div>
+        </section>
+        
+        <section class="prayer-times">
+          <h2>Today's Prayer Times</h2>
+          <div class="prayer-times-grid" id="prayer-times-grid">
+            <!-- Prayer times will be populated here -->
+            <div class="prayer-time-card">
+              <div class="prayer-name">Fajr</div>
+              <div class="prayer-time">04:55</div>
+            </div>
+            <div class="prayer-time-card">
+              <div class="prayer-name">Sunrise</div>
+              <div class="prayer-time">05:58</div>
+            </div>
+            <div class="prayer-time-card">
+              <div class="prayer-name">Dhuhr</div>
+              <div class="prayer-time">12:20</div>
+            </div>
+            <div class="prayer-time-card">
+              <div class="prayer-name">Asr</div>
+              <div class="prayer-time">16:51</div>
+            </div>
+            <div class="prayer-time-card">
+              <div class="prayer-name">Maghrib</div>
+              <div class="prayer-time">18:42</div>
+            </div>
+            <div class="prayer-time-card">
+              <div class="prayer-name">Isha</div>
+              <div class="prayer-time">19:45</div>
+            </div>
+          </div>
+        </section>
+        
+        <section class="monthly-schedule">
+          <div class="monthly-header">
+            <h2>Monthly Schedule</h2>
+            <div class="month-navigation">
+              <button id="prev-month" aria-label="Previous month">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="m15 18-6-6 6-6"></path>
+                </svg>
+              </button>
+              <div id="current-month-display">April 2025</div>
+              <button id="next-month" aria-label="Next month">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="m9 18 6-6-6-6"></path>
+                </svg>
+              </button>
+            </div>
+          </div>
+          <div class="monthly-table-container">
+            <table class="monthly-table">
+              <thead>
+                <tr>
+                  <th>Date</th>
+                  <th>Fajr</th>
+                  <th>Sunrise</th>
+                  <th>Dhuhr</th>
+                  <th>Asr</th>
+                  <th>Maghrib</th>
+                  <th>Isha</th>
+                </tr>
+              </thead>
+              <tbody id="monthly-table-body">
+                <!-- Monthly data will be populated here -->
+              </tbody>
+            </table>
+          </div>
+        </section>
+      </main>
+      
+      <footer class="footer">
+        <div class="container">
+          <div class="footer-content">
+            <p>© 2025 Prayer Times App. All rights reserved.</p>
+            <div class="footer-links">
+              <a href="#">About</a>
+              <a href="#">Contact</a>
+              <a href="#">Privacy</a>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script src="js/api.js"></script>
+    <script src="js/app.js"></script>
+  </body>
+</html>
