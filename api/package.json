@@ -1,0 +1,13 @@
+{
+  "name": "prayer-times-api",
+  "version": "1.0.0",
+  "description": "Prayer Times API for Vercel",
+  "main": "handler.js",
+  "engines": {
+    "node": "18.x"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  },
+  "type": "commonjs"
+}

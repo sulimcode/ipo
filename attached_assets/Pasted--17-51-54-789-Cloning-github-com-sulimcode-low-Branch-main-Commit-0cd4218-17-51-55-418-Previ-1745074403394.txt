@@ -1,0 +1,60 @@
+[17:51:54.789] Cloning github.com/sulimcode/low (Branch: main, Commit: 0cd4218)
+[17:51:55.418] Previous build caches not available
+[17:51:55.641] Cloning completed: 850.000ms
+[17:51:56.085] Running build in Washington, D.C., USA (East) – iad1
+[17:51:56.308] Running "vercel build"
+[17:51:56.682] Vercel CLI 41.6.0
+[17:51:57.442] > Installing Builder: @vercel/node@2.10.0
+[17:52:09.657] Running "install" command: `npm install`...
+[17:52:13.568] npm warn deprecated inflight@1.0.6: This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, which is much more comprehensive and powerful.
+[17:52:14.985] npm warn deprecated @esbuild-kit/esm-loader@2.6.5: Merged into tsx: https://tsx.is
+[17:52:15.093] npm warn deprecated @esbuild-kit/core-utils@3.3.2: Merged into tsx: https://tsx.is
+[17:52:15.296] npm warn deprecated glob@7.2.3: Glob versions prior to v9 are no longer supported
+[17:52:22.120] 
+[17:52:22.121] added 596 packages, and audited 597 packages in 12s
+[17:52:22.122] 
+[17:52:22.123] 72 packages are looking for funding
+[17:52:22.123]   run `npm fund` for details
+[17:52:22.155] 
+[17:52:22.156] 10 vulnerabilities (8 moderate, 2 high)
+[17:52:22.156] 
+[17:52:22.156] To address issues that do not require attention, run:
+[17:52:22.156]   npm audit fix
+[17:52:22.156] 
+[17:52:22.157] To address all issues (including breaking changes), run:
+[17:52:22.157]   npm audit fix --force
+[17:52:22.157] 
+[17:52:22.157] Run `npm audit` for details.
+[17:52:22.344] Vercel build script (CJS version) started
+[17:52:22.345] Node.js version: v22.14.0
+[17:52:22.345] Current directory: /vercel/path0
+[17:52:22.345] Running on Vercel: Yes
+[17:52:22.345] Starting Vercel build preparation
+[17:52:22.345] Creating polyfill for import.meta.dirname
+[17:52:22.345] Found client/index.html at /vercel/path0/client/index.html
+[17:52:22.346] Copied client/index.html to /vercel/path0/index.html
+[17:52:22.346] Updated script path in index.html
+[17:52:22.346] Vercel build preparation completed successfully
+[17:52:22.469] 
+[17:52:22.470] > rest-express@1.0.0 build
+[17:52:22.470] > vite build && esbuild server/index.ts --platform=node --packages=external --bundle --format=esm --outdir=dist
+[17:52:22.470] 
+[17:52:22.861] [36mvite v5.4.14 [32mbuilding for production...[36m[39m
+[17:52:22.935] transforming...
+[17:52:23.200] Browserslist: browsers data (caniuse-lite) is 6 months old. Please run:
+[17:52:23.200]   npx update-browserslist-db@latest
+[17:52:23.200]   Why you should do it regularly: https://github.com/browserslist/update-db#readme
+[17:52:28.030] [32m✓[39m 1723 modules transformed.
+[17:52:28.372] rendering chunks...
+[17:52:28.382] computing gzip size...
+[17:52:28.570] [2m../dist/public/[22m[32mindex.html                 [39m[1m[2m  3.38 kB[22m[1m[22m[2m │ gzip:   0.92 kB[22m
+[17:52:28.571] [2m../dist/public/[22m[2massets/[22m[35mindex-CfF1guBF.css  [39m[1m[2m 66.26 kB[22m[1m[22m[2m │ gzip:  11.84 kB[22m
+[17:52:28.572] [2m../dist/public/[22m[2massets/[22m[36mindex-DfJO8ikl.js   [39m[1m[2m382.64 kB[22m[1m[22m[2m │ gzip: 121.41 kB[22m
+[17:52:28.573] [32m✓ built in 5.69s[39m
+[17:52:28.632] 
+[17:52:28.633]   dist/index.js  35.4kb
+[17:52:28.633] 
+[17:52:28.633] ⚡ Done in 11ms
+[17:52:28.704] Error: Found invalid Node.js Version: "22.x". Please set Node.js Version to 18.x in your Project Settings to use Node.js 18.
+[17:52:28.705] Learn More: http://vercel.link/node-version
+[17:52:29.096] 
